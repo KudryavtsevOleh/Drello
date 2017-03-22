@@ -1,0 +1,26 @@
+spring:
+    application:
+        name: drello
+    profiles:
+        active: dev
+    main:
+        banner-mode: "off"
+    jpa:
+        show_sql: false
+    mvc:
+        favicon:
+            enabled: false
+---
+spring:
+    profiles: dev
+    data:
+      mongodb:
+        database: drello
+        host: localhost
+        port: 27017
+    jpa:
+        hibernate:
+            ddl-auto: create
+    resources:
+        chain:
+            cache: false

@@ -1,0 +1,22 @@
+{
+  "name": "rga",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.2.4",
+    "angular-resource": "1.5.9",
+    "angular-cookies": "1.5.9",
+    "angular-sanitize": "1.5.9",
+    "angular-route": "1.5.9",
+    "angular-animate": "1.5.9",
+    "jquery.ui": "1.5.1",
+    "bootstrap-datepicker": "1.6.1",
+    "angular-route-segment": "1.5.1",
+    "angular": "1.5.9",
+    "font-awesome": "4.7.0",
+    "glyphicons": "0.0.2",
+    "iCheck": "1.0.2",
+    "skylo": "*",
+    "angular-bootstrap": "2.3.2",
+    "pnotify": "3.0.0"
+  }
+}

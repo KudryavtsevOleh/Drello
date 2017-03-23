@@ -9,15 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Log4j
-@RestController
+@Controller
 public class IndexController {
 
-    @Autowired
-    private TestRepository testRepository;
-
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     public String index() {
-        return "Hello world";
-    }
+        return "assets/templates/index";
+    }*/
 
 }

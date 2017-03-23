@@ -75,7 +75,7 @@ task bowerInstall(type: NodeTask, dependsOn: npmPackages) {
 
 task buildWeb(type: GulpTask, dependsOn: bowerInstall) {
     workingDir = file("${project.projectDir}/ui")
-    args = ["build.prod"]
+    args = ["build"]
 }
 
 tasks.bootRepackage.dependsOn buildWeb

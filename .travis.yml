@@ -1,0 +1,8 @@
+language: java
+jdk:
+ - oraclejdk8
+deploy:
+ provider: heroku
+ api-key:
+  secure: b7b0ee2f-245b-41a9-ab9c-ea9ff0bf03f6
+ app: drello

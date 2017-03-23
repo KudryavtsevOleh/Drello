@@ -1,1 +1,1 @@
-web: gradle bootRun
+web: java -Dserver.port=$PORT -jar build/libs/drello-1.0-SNAPSHOT.jar

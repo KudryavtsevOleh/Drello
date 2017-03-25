@@ -40,7 +40,8 @@ dependencies {
     compileOnly "org.projectlombok:lombok"
     providedRuntime "org.springframework.boot:spring-boot-starter-tomcat"
     testCompile "org.springframework.boot:spring-boot-starter-test"
-//    compile "org.springframework.boot:spring-boot-starter-security"
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile group: "org.json", name: "json", version: "${project.jsonVersion}"
     compile group: "org.apache.commons", name: "commons-lang3", version: "${project.commonsLangVersion}"
     compile group: "org.apache.commons", name: "commons-collections4", version: "${project.commonsCollectionsVersion}"
 }

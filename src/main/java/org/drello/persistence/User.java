@@ -2,6 +2,7 @@ package org.drello.persistence;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.drello.enums.Role;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,5 +16,6 @@ public class User {
     private String login;
     private String email;
     private String password;
+    private Role role;
 
 }

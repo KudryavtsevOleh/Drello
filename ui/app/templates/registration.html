@@ -3,19 +3,30 @@
         <div class="verticalcenter col-xs-12 col-sm-4" style=" float: none; margin: 0 auto;">
             <div class="panel panel-primary">
                 <div class="panel-body" style="padding-bottom: 0;">
-                    <h4 class="text-center" style="margin-bottom: 25px;">Log in to get started</h4>
+                    <h4 class="text-center" style="margin-bottom: 25px;">Register</h4>
 
-                    <form action="#" class="form-horizontal" style="margin-bottom: 0px !important;"  ng-submit="login()">
+                    <form name="registerForm" action="#" class="form-horizontal" style="margin-bottom: 0 !important;">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="email"
+                                           class="form-control"
+                                           id="email"
+                                           placeholder="Email"
+                                           ng-model="user.email">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <input type="text"
                                            class="form-control"
-                                           ng-keyup="$event.keyCode == 13 && login()"
                                            id="username"
                                            placeholder="Username"
-                                           ng-model="user.username">
+                                           ng-model="user.login">
                                 </div>
                             </div>
                         </div>
@@ -24,20 +35,28 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                                     <input type="password"
+                                           name="userPassword"
                                            class="form-control"
                                            id="password"
                                            placeholder="Password"
-                                           ng-model="user.password"
-                                           ng-keyup="$event.keyCode == 13 && login()">
+                                           ng-model="user.password">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <span>Haven't an account? Please </span>
-                                    <a href="#!/register">register</a>
+                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                    <input type="password"
+                                           name="confirmUserPassword"
+                                           class="form-control"
+                                           id="confirmPassword"
+                                           ng-change="checkPassword()"
+                                           ng-model-options="{ debounce: 800 }"
+                                           placeholder="Confirm password"
+                                           ng-model="user.confirmPassword">
                                 </div>
+                                <span ng-show="passwordError">Passwords isn't match</span>
                             </div>
                         </div>
                     </form>
@@ -45,7 +64,7 @@
                 <div class="panel-footer">
 
                     <div class="pull-right">
-                        <a  ng-click="login()" class="btn btn-primary">Log In</a>
+                        <a ng-click="register()" ng-enabled="registerForm.$valid" class="btn btn-primary">Register</a>
                     </div>
                 </div>
             </div>

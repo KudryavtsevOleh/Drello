@@ -1,0 +1,23 @@
+<header
+        id="topnav"
+        class="navbar"
+        ng-controller="MainController"
+        role="banner"
+        ng-class="{'navbar-fixed-top': getLayoutOption('fixedHeader'), 'navbar-static-top': !getLayoutOption('fixedHeader')}"
+        ng-cloak>
+
+    <a id="leftmenu-trigger" ng-click="toggleLeftBar()"></a>
+
+    <div class="navbar-header pull-left">
+        <a class="navbar-brand" href="#!/">Drello</a>
+    </div>
+
+    <ul class="nav navbar-nav pull-right toolbar login-list">
+        <li class="dropdown" ng-show="!isLoggedIn">
+            <a ng-click="logOut()"><i class="fa fa-sign-out"></i> Log Out</a>
+        </li>
+        <li class="dropdown" ng-show="currentUser">
+            <a class="cursor-default">{{ currentUser.name }}</a>
+        </li>
+    </ul>
+</header>

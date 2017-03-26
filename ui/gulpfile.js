@@ -11,6 +11,7 @@ var gulp = require("gulp"),
     CacheBuster = require('gulp-cachebust'),
     cachebust = new CacheBuster(),
     ngAnnotate = require('gulp-ng-annotate'),
+    babel = require('gulp-babel'),
     isDev = false;
 
 var STATIC_FOLDER = "../src/main/resources/";
@@ -18,7 +19,8 @@ var STATIC_FOLDER = "../src/main/resources/";
 var BUNDLE = {
     BASE: "app/bundle",
     JS: "app.js",
-    CSS: "app.css"
+    CSS: "app.css",
+    CUSTOM_JS: "app/bundle/custom.js"
 };
 
 var LOCATION = {
@@ -96,7 +98,17 @@ gulp.task("clean.js", function () {
     return del(LOCATION.MAIN_JS + "/**/*.js", {force: true});
 });
 
-gulp.task("compress.js", function () {
+gulp.task("compress.js.custom", function () {
+    return gulp.src([LOCATION.UI_JS])
+        .pipe(concat("custom.js"))
+        .pipe(ngAnnotate())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(gulp.dest(BUNDLE.BASE));
+});
+
+gulp.task("compress.js", () => {
     return gulp.src([
         "bower_components/jquery/dist/jquery.js",
         "bower_components/angular/angular.js",
@@ -110,13 +122,14 @@ gulp.task("compress.js", function () {
         "bower_components/pnotify/dist/pnotify.buttons.js",
         "bower_components/pnotify/dist/pnotify.nonblock.js",
         "bower_components/angular-resource/angular-resource.js",
-        LOCATION.UI_JS
+        BUNDLE.CUSTOM_JS
     ])
         .pipe(concat("app.js"))
-        .pipe(ngAnnotate())
         .pipe(gulpIf(!isDev, uglify()))
-        .pipe(gulp.dest(BUNDLE.BASE))
+        .pipe(gulp.dest(BUNDLE.BASE));
 });
+
+gulp.task("build.js", gulp.series("compress.js.custom", "compress.js"));
 
 gulp.task("clean.css", function () {
     return del(LOCATION.MAIN_CSS + "/**/*.css", {force: true});
@@ -168,7 +181,7 @@ gulp.task("watch", function () {
     gulp.watch(LOCATION.UI_TEMPLATES, gulp.series("clean.html", "replace.html"));
 });
 
-gulp.task('build', gulp.series("clean.bundle", "clean.css", "clean.less", "clean.js", "clean.html", "build.fonts", "compress.less", "compress.css", "compress.js", "replace.html", "move"));
+gulp.task('build', gulp.series("clean.bundle", "clean.css", "clean.less", "clean.js", "clean.html", "build.fonts", "compress.less", "compress.css", "build.js", "replace.html", "move"));
 
 // gulp.task("build.prod", gulp.series("clean.bundle", "clean.js", "clean.css", "clean.less", "clean.html", "build.fonts", "compress.js", "compress.less", "compress.css", "cache.bust", "replace.html"));
 

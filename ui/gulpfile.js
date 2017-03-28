@@ -1,6 +1,6 @@
 "use strict";
 
-var gulp = require("gulp"),
+let gulp = require("gulp"),
     uglify = require("gulp-uglify"),
     cssmin = require("gulp-cssmin"),
     gulpIf = require("gulp-if"),
@@ -14,16 +14,16 @@ var gulp = require("gulp"),
     babel = require('gulp-babel'),
     isDev = false;
 
-var STATIC_FOLDER = "../src/main/resources/";
+let STATIC_FOLDER = "../src/main/resources/";
 
-var BUNDLE = {
+let BUNDLE = {
     BASE: "app/bundle",
     JS: "app.js",
     CSS: "app.css",
     CUSTOM_JS: "app/bundle/custom.js"
 };
 
-var LOCATION = {
+let LOCATION = {
     MAIN_JS: STATIC_FOLDER + "static/js/",
     MAIN_CSS: STATIC_FOLDER + "static/css/",
     UI_JS: "app/**/*.js",

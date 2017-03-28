@@ -49,6 +49,7 @@
                     },
                     size: size
                 });
+                $scope.refresh();
             };
 
             $scope.openEditConfirmModal = function (size, board) {

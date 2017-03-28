@@ -1,0 +1,48 @@
+.navbar-header {
+    height: 30px;
+}
+
+.navbar-brand {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#content-wrapper {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    height: 100%;
+}
+
+form .ng-dirty.ng-valid {
+    border-color: #e0e0e0;
+    color: inherit;
+}
+
+table {
+    word-break: break-all;
+}
+
+table tbody tr:hover {
+    background: #eeeeee;
+    cursor: pointer;
+}
+
+table tbody tr.first-tr {
+    font-weight: bold
+}
+
+table tbody tr.first-tr:hover {
+    cursor: default;
+    background: none;
+}
+
+table tbody tr td.last-td-btn-column {
+    white-space: nowrap
+}
+
+.icheck-label {
+    padding: 0 !important;
+    text-rendering: auto;
+    margin-top: 10px;
+}

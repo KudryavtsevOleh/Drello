@@ -12,9 +12,12 @@ angular
         "drello.pnotify"
     ])
     .value("API", "/api")
-    .config(["$routeSegmentProvider", "$locationProvider", "$routeProvider", "$httpProvider",
+    .config(
         function($routeSegmentProvider, $locationProvider, $routeProvider, $httpProvider) {
-            var ROLE = {
+
+            "ngInject";
+
+            let ROLE = {
                 USER: "USER",
                 ADMIN: "ADMIN"
             };
@@ -30,19 +33,38 @@ angular
                 })
                 .when("/", "app", {roles: ['Unreachable route']})
                 .when("/register", "register", {roles: ['Unreachable route']})
-                .when("/boards", "boards")
-                .segment("app", {
-                    templateUrl: "templates/app.html"
-                })
+                .when("/boards", "app.boards")
+                .when("/board/create", "app.createBoard", {roles: [ROLE.USER]})
+                .when("/board/create", "app.createBoard", {roles: [ROLE.USER]})
                 .segment("register", {
                     templateUrl: "templates/registration.html",
                     controller: "RegisterController"
                 })
-                .segment("boards", {
-                    templateUrl: "templates/fragments/boards.html",
-                    controller: "BoardController"
-                });
+                .segment("app", {
+                    templateUrl: "templates/app.html"
+                })
+                .within()
+                    .segment("boards", {
+                        templateUrl: "templates/fragments//board/boards.html",
+                        controller: "BoardController",
+                        resolve: {
+                            boards: (BoardService) => {
+                                return BoardService.getBoards({
+                                    page: 0,
+                                    size: 10
+                                });
+                            }
+                        }
+                    })
+                    .segment("createBoard", {
+                        templateUrl: "templates/fragments/board/add-board.html",
+                        controller: "BoardCreateController"
+                    })
+                    .segment("createBoard", {
+                        templateUrl: "templates/fragments/board/add-board.html",
+                        controller: "BoardCreateController"
+                    });
 
             $routeProvider.otherwise({redirectTo: "/login"});
             $httpProvider.interceptors.push("requestResponseObserver");
-        }]);
+        });

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +43,8 @@ public class UserController {
 
     @RequestMapping("/app/user")
     @SuppressWarnings("unchecked")
-    public ResponseEntity getCurrentUser(Authentication authentication) {
+    public ResponseEntity getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         List<String> userRoles = ((List<SimpleGrantedAuthority>) authentication.getAuthorities()).stream().map(SimpleGrantedAuthority::getAuthority).collect(Collectors.toList());
         Map<String, Object> user = new HashMap<>();
         user.put("name", authentication.getName());

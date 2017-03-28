@@ -1,0 +1,8 @@
+<div class="form-horizontal col-sm-12 pull-right">
+    <div class="form-group">
+        <label class="col-sm-11 control-label">Items per page</label>
+        <div class="col-sm-1">
+            <select class="form-control" ng-model="value" ng-options="count for count in itemsPerPage track by count" ng-change="action"></select>
+        </div>
+    </div>
+</div>

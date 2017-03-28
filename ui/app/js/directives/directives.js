@@ -135,4 +135,25 @@ angular
                 return false;
             }
         };
-    }]);
+    }])
+    .directive("itemPerPage", function () {
+        return {
+            restriction: "E",
+            templateUrl: "templates/fragments/item-per-page.html",
+            scope: {
+                value: '=ngModel',
+                itemsPerPage: '=',
+                action: '=ngChange'
+            }
+        }
+    })
+    .directive("pageOfAll", function () {
+        return {
+            restriction: "E",
+            templateUrl: "templates/fragments/page-of-all.html",
+            scope: {
+                page: '=',
+                pages: '='
+            }
+        }
+    });

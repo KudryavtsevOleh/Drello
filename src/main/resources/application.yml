@@ -3,6 +3,9 @@ spring:
         name: drello
     profiles:
         active: dev
+    data:
+        rest:
+          base-path: /api
     main:
         banner-mode: "off"
     jpa:

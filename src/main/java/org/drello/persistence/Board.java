@@ -20,4 +20,7 @@ public class Board {
     @DBRef
     private List<Column> columns;
 
+    @DBRef
+    private User user;
+
 }

@@ -36,7 +36,7 @@ public class UserService {
         User user = new User();
         user.setEmail(userBean.getEmail());
         user.setPassword(new BCryptPasswordEncoder().encode(userBean.getPassword()));
-        user.setRole(Role.USER);
+        user.setRole(Role.ROLE_USER);
         return userRepository.save(user);
     }
 

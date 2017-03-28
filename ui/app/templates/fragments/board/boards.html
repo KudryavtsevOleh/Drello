@@ -1,0 +1,78 @@
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li class="active">Boards</li>
+    </ol>
+    <div class="options">
+        <div class="btn-toolbar">
+            <a class="btn btn-default" title="Add" ng-click="openCreateModal('md')"><i class="glyphicon glyphicon-plus"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <panel panel-class="panel-primary" data-heading="Boards">
+                <item-per-page ng-model="pagination.elementsPerPage" items-per-page="itemsCountPerPage" ng-change="pageSizeChanged()"></item-per-page>
+                <page-of-all page="pagination.currentPage" pages="allPages"></page-of-all>
+                <table class="table endpoints table-condensed">
+                    <thead>
+                    <tr style="font-weight: bold">
+                        <th sortable-column property-name="id" title="Id" reverse="sort.reverse" predicate="sort.predicate" ng-click="refresh()"></th>
+                        <th sortable-column property-name="userName" title="Name" reverse="sort.reverse" predicate="sort.predicate" ng-click="refresh()"></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr style="cursor: pointer;" ng-repeat="board in boards" ng-click="">
+                        <td>
+                            <span>{{ board.id }}</span>
+                        </td>
+
+                        <td>
+                            <span>{{ board.name }}</span>
+                        </td>
+
+                        <td style="white-space: nowrap">
+                            <div class="buttons">
+                                <button title="Delete" class="btn btn-sm btn-default" ng-click="openDeleteConfirmModal('md', board); $event.stopPropagation();">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                                <button title="Delete" class="btn btn-sm btn-default" ng-click="openEditConfirmModal('md', board); $event.stopPropagation();">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr class="active" ng-show="totalItems != 0" >
+                        <td colspan="6" class="text-left" style="background: none;">
+                            <div class="clearfix">
+                                <div class="pull-right">
+                                    <ul uib-pagination
+                                        boundary-links="true"
+                                        direction-links="true"
+                                        rotate="false"
+                                        total-items="pagination.totalItems"
+                                        ng-model="pagination.currentPage"
+                                        max-size="10"
+                                        items-per-page="pagination.itemsPerPage"
+                                        num-pages="allPages"
+                                        ng-change="refresh()"
+                                        class="pagination-sm"
+                                        previous-text="&lsaquo;"
+                                        next-text="&rsaquo;"
+                                        first-text="&laquo;"
+                                        last-text="&raquo;"></ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </panel>
+        </div>
+    </div>
+
+</div>

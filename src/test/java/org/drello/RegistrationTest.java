@@ -1,6 +1,5 @@
 package org.drello;
 
-import lombok.SneakyThrows;
 import org.drello.bean.UserBean;
 import org.drello.exceptions.DrelloException;
 import org.drello.persistence.User;
@@ -38,8 +37,7 @@ public class RegistrationTest {
     }
 
     @Test
-    @SneakyThrows
-    public void successfulRegisterNewUser() {
+    public void successfulRegisterNewUser() throws DrelloException {
         userRepository.deleteAll();
         User user = userService.create(userBean);
 
@@ -48,8 +46,7 @@ public class RegistrationTest {
     }
 
     @Test(expected = DrelloException.class)
-    @SneakyThrows
-    public void failureRegisterNewUser() {
+    public void failureRegisterNewUser() throws DrelloException {
         userRepository.deleteAll();
         User user = userService.create(userBean);
 

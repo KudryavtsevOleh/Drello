@@ -2,7 +2,7 @@ spring:
     application:
         name: drello
     profiles:
-        active: dev
+        active: prod
     data:
         rest:
           base-path: /api
@@ -52,9 +52,9 @@ spring:
 spring:
     profiles: prod
     datasource:
-      url: jdbc:mysql://localhost:3306/drello?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
-      username: root
-      password:
+      url: jdbc:postgresql://ec2-54-75-249-162.eu-west-1.compute.amazonaws.com:5432/d9cjmp912t28h1
+      username: ypoaivwtamtvuv
+      password: e6dd668f830e2390f9eafef029334d46b2333569b98100717e670b5b2382b94c
       test-on-borrow: true
       validation-query: SELECT 1
       test-while-idle: true

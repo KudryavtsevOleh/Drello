@@ -35,12 +35,12 @@ spring:
 spring:
     profiles: test
     datasource:
-      url: jdbc:mysql://localhost:3306/drello_test?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
-      username: root
-      password:
+      url: jdbc:h2:~/mydb;DB_CLOSE_ON_EXIT=FALSE
       test-on-borrow: true
       validation-query: SELECT 1
       test-while-idle: true
+      dbcp:
+        driver-class-name: org.h2.Driver
     jpa:
         hibernate:
             ddl-auto: create-drop

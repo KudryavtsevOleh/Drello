@@ -24,7 +24,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr style="cursor: pointer;" ng-repeat="board in boards" ng-click="">
+                    <tr style="cursor: pointer;" ng-repeat="board in boards" ng-click="goToBoardColumnsPage(board.id)">
                         <td>
                             <span>{{ board.id }}</span>
                         </td>

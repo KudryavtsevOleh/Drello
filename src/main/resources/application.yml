@@ -10,20 +10,58 @@ spring:
         banner-mode: "off"
     jpa:
         show_sql: false
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: MYSQL
     mvc:
         favicon:
             enabled: false
 ---
 spring:
     profiles: dev
-    data:
-      mongodb:
-        database: drello
-        host: localhost
-        port: 27017
+    datasource:
+      url: jdbc:mysql://localhost:3306/drello?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password:
+      test-on-borrow: true
+      validation-query: SELECT 1
+      test-while-idle: true
     jpa:
         hibernate:
             ddl-auto: create
+    resources:
+        chain:
+            cache: false
+---
+spring:
+    profiles: test
+    datasource:
+      url: jdbc:mysql://localhost:3306/drello_test?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password:
+      test-on-borrow: true
+      validation-query: SELECT 1
+      test-while-idle: true
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        show-sql: true
+    resources:
+        chain:
+            cache: false
+---
+spring:
+    profiles: prod
+    datasource:
+      url: jdbc:mysql://localhost:3306/drello?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password:
+      test-on-borrow: true
+      validation-query: SELECT 1
+      test-while-idle: true
+    jpa:
+        hibernate:
+            ddl-auto: create
+        show-sql: true
     resources:
         chain:
             cache: false

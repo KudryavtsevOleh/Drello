@@ -3,8 +3,8 @@
 (() => {
     angular
         .module("drello")
-        .controller("BoardDeleteController",
-            function ($scope, $uibModalInstance, BoardService, board, boards) {
+        .controller("ColumnDeleteController",
+            function ($scope, $uibModalInstance, ColumnService, column, columns) {
 
                 "ngInject";
 
@@ -13,10 +13,10 @@
                 };
 
                 $scope.confirm = function () {
-                    BoardService.delete(board.id, () => {
-                        let index = boards.indexOf(board);
+                    ColumnService.delete(column.id, () => {
+                        let index = columns.indexOf(column);
                         if(index > -1) {
-                            boards.splice(index, 1);
+                            columns.splice(index, 1);
                         }
                         $uibModalInstance.dismiss('cancel');
                     }, function(error) {

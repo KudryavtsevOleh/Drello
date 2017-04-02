@@ -2,20 +2,21 @@ package org.drello.persistence;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
-@Document
+@Entity
 public class Column {
 
-    private String id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;
 
-    @DBRef
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Card> cards;
 
 }

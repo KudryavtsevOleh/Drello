@@ -2,24 +2,23 @@ package org.drello.persistence;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
-@Document
+@Entity
 public class CheckList {
 
     @Id
-    private String id;
+    @GeneratedValue
+    private Long id;
 
     private String name;
     private Double progress;
 
-    @DBRef
+    @OneToMany(fetch = FetchType.LAZY)
     private List<CheckListItem> checkListItems;
 
 }

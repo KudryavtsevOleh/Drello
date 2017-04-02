@@ -2,35 +2,34 @@ package org.drello.persistence;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
-@Document
+@Entity
 public class Card {
 
     @Id
-    private String id;
+    @GeneratedValue
+    private Long id;
 
     private String name;
     private String description;
 
-    @DBRef
+    @OneToMany(fetch = FetchType.LAZY)
     private List<User> users;
 
-    @DBRef
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Comment> comments;
 
     private Long dueDate;
 
-    @DBRef
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Attachment> attachments;
 
-    @DBRef
+    @OneToMany(fetch = FetchType.LAZY)
     private List<CheckList> checkLists;
 
 }

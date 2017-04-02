@@ -13,7 +13,7 @@
                 //todo: reimplement it
                 delete $scope.user.confirmPassword;
                 RegisterService.registerNewUser($scope.user, () => {
-                    $location.path("/boards");
+                    $location.path("/login");
                 }, (error) => {
                     notificationService.error(error.message);
                 })

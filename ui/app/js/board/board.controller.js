@@ -15,8 +15,8 @@
             $scope.itemsCountPerPage = [10, 50, 100];
             updatePaginationData(boards);
 
-            $scope.goToCreateBoardPage = () => {
-                $location.path("/board/create");
+            $scope.goToBoardColumnsPage = (id) => {
+                $location.path("/board/" + id + "/columns");
             };
 
             $scope.openCreateModal = function (size) {

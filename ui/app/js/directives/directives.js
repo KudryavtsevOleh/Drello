@@ -156,4 +156,13 @@ angular
                 pages: '='
             }
         }
+    })
+    .directive("columnPanel", () => {
+        return {
+            restriction: "A",
+            templateUrl: "templates/fragments/column/column-panel.html",
+            scope: {
+                column: "="
+            }
+        }
     });

@@ -2,6 +2,7 @@ package org.drello.controller;
 
 import com.google.gson.Gson;
 import lombok.extern.log4j.Log4j;
+import org.drello.bean.CurrentUser;
 import org.springframework.security.core.Authentication;
 import org.drello.bean.UserBean;
 import org.drello.persistence.User;
@@ -46,8 +47,10 @@ public class UserController {
     public ResponseEntity getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         List<String> userRoles = ((List<SimpleGrantedAuthority>) authentication.getAuthorities()).stream().map(SimpleGrantedAuthority::getAuthority).collect(Collectors.toList());
+        CurrentUser authenticatedUser = (CurrentUser) authentication.getPrincipal();
         Map<String, Object> user = new HashMap<>();
-        user.put("name", authentication.getName());
+        user.put("email", authentication.getName());
+        user.put("login", authenticatedUser.getUser().getLogin());
         user.put("roles", userRoles);
         return ResponseEntity.ok(user);
     }

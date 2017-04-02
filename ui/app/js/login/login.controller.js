@@ -7,10 +7,10 @@
             function ($scope, $http, $window, $rootScope, Auth, $location, notificationService) {
 
                 $scope.login = function () {
-                    Auth.login($scope.user).then(function (resp) {
+                    Auth.login($scope.user).then((resp) => {
                         if (resp) {
-                            Auth.getCurrentUser(function() {
-                                    $location.path("/boards");
+                            Auth.getCurrentUser(() => {
+                                $location.path("/boards");
                             });
                         }
 

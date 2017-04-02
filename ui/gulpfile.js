@@ -12,7 +12,7 @@ let gulp = require("gulp"),
     cachebust = new CacheBuster(),
     ngAnnotate = require('gulp-ng-annotate'),
     babel = require('gulp-babel'),
-    isDev = false;
+    isDev = true;
 
 let STATIC_FOLDER = "../src/main/resources/";
 

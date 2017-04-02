@@ -1,9 +1,9 @@
 "use strict";
 
 (() => {
-    angular.module("drello").factory("BoardFactory", ($resource) => {
+    angular.module("drello").factory("ColumnFactory", ($resource) => {
         "ngInject";
-        let baseUrl = "/api/boards/";
+        let baseUrl = "/api/columns/";
         return $resource(baseUrl + ":id", {id: "@id"}, {
             save: {
                 method: "POST"
@@ -14,12 +14,11 @@
             delete: {
                 method: "DELETE"
             },
-            getBoards: {
+            getColumns: {
                 method: "GET",
                 params: {
-                    projection: "board"
-                },
-                isArray: false
+                    projection: "column"
+                }
             }
         });
     })

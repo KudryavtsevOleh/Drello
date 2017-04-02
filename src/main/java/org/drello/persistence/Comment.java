@@ -2,17 +2,20 @@ package org.drello.persistence;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
-@Document
+@Entity
 public class Comment {
 
-    private String id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-    @DBRef
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     private String text;

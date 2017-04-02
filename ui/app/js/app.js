@@ -34,8 +34,7 @@ angular
                 .when("/", "app", {roles: ['Unreachable route']})
                 .when("/register", "register", {roles: ['Unreachable route']})
                 .when("/boards", "app.boards")
-                .when("/board/create", "app.createBoard", {roles: [ROLE.USER]})
-                .when("/board/create", "app.createBoard", {roles: [ROLE.USER]})
+                .when("/board/:id/columns", "app.columns")
                 .segment("register", {
                     templateUrl: "templates/registration.html",
                     controller: "RegisterController"
@@ -45,7 +44,7 @@ angular
                 })
                 .within()
                     .segment("boards", {
-                        templateUrl: "templates/fragments//board/boards.html",
+                        templateUrl: "templates/fragments/board/boards.html",
                         controller: "BoardController",
                         resolve: {
                             boards: (BoardService) => {
@@ -56,13 +55,14 @@ angular
                             }
                         }
                     })
-                    .segment("createBoard", {
-                        templateUrl: "templates/fragments/board/add-board.html",
-                        controller: "BoardCreateController"
-                    })
-                    .segment("createBoard", {
-                        templateUrl: "templates/fragments/board/add-board.html",
-                        controller: "BoardCreateController"
+                    .segment("columns", {
+                        templateUrl: "templates/fragments/column/columns.html",
+                        controller: "ColumnCreateController",
+                        resolve: {
+                            columns: (ColumnService) => {
+                                return ColumnService.getColumns();
+                            }
+                        }
                     });
 
             $routeProvider.otherwise({redirectTo: "/login"});

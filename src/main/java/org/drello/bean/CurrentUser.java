@@ -17,7 +17,7 @@ public class CurrentUser extends org.springframework.security.core.userdetails.U
         return user;
     }
 
-    public String getId() {
+    public Long getId() {
         return user.getId();
     }
 

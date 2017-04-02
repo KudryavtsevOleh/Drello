@@ -6,7 +6,7 @@
     AuthService.$inject = ['$http', '$window', '$httpParamSerializer', '$rootScope'];
     function AuthService($http, $window, $httpParamSerializer, $rootScope) {
 
-        var service = {
+        let service = {
             login: function (credentials) {
                 return $http.post('/auth/login', $httpParamSerializer(credentials), {
                     headers: {
@@ -24,7 +24,7 @@
             },
             getCurrentUser: function (cb) {
                 $http.get('/app/user').then(function (response) {
-                        if (response.data.name) {
+                        if (response.data.login) {
                             $rootScope.currentUser = response.data;
                             if (cb) cb();
                         }

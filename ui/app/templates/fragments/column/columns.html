@@ -1,0 +1,21 @@
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li class="active">Boards</li>
+    </ol>
+    <div class="options">
+        <div class="btn-toolbar">
+            <a class="btn btn-default" title="Add" ng-click="openCreateModal('md')"><i class="glyphicon glyphicon-plus"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" ng-repeat="column in columns">
+    <div class="row">
+        <div class="col-md-12">
+
+            <column-panel column="column"></column-panel>
+
+        </div>
+    </div>
+
+</div>

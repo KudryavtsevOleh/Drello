@@ -1,0 +1,26 @@
+<panel panel-class="panel-primary" data-heading="{{ column.name }}">
+    <table class="table endpoints table-condensed">
+        <thead>
+        <tr style="font-weight: bold">
+            <th>Name</th>
+            <th>Description</th>
+            <th>Due date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr style="cursor: pointer;" ng-repeat="card in column.cards">
+            <td>
+                <span>{{ card.name }}</span>
+            </td>
+
+            <td>
+                <span>{{ card.description }}</span>
+            </td>
+
+            <td>
+                <span>{{ card.dueDate }}</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</panel>

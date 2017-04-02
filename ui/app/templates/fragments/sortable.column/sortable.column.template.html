@@ -1,0 +1,6 @@
+<th ng-class="{'sortable-active-column': isActive()}" ng-click=";click()">
+    <div class="sortable">
+        <span ng-transclude>{{ title }}</span>
+        <i class="fa sortable-arrows" ng-class="{'fa-sort-up': isUp(), 'fa-sort-down': isDown(), 'fa-sort': isDefault()}"></i>
+    </div>
+</th>

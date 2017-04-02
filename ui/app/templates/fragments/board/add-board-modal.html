@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h4 class="modal-title">Creating new board</h4>
+</div>
+<div class="modal-body">
+    <div class="form-group" ng-show="error">
+        <div class="alert alert-danger alert-dismissable">
+            Error occurred while saving new board {{ alert }}
+            <button type="button" class="close" data-dismiss="alert" ng-click="hideError();">&times;</button>
+        </div>
+    </div>
+    <form class="form-horizontal" role="form" name="board.form">
+        <div class="form-group">
+            <label for="boardName" style="margin-left: 10px;">Board name</label>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="boardName" placeholder="Board name" ng-model="board.name" required="true">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="save(board.form)">Create</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>

@@ -9,7 +9,13 @@ Run the next command to download the repository
 3. Go to **application.yml** and set appropriate **username** and **password** to your postgres database.
 
 ### To run project you need:
+1. Install NodeJS from[here](https://nodejs.org/uk/download/)
 1. Go to project root directory
-2. Run command from terminal:<br><br>
-2.1. Windows: ```gradlew.bat bootRun```<br>
-2.2. UN*X: ```gradlew bootRun``` 
+2. Go to /ui folder and do ```npm install``` and ```bower install``` commands
+3. Install gulp: ```npm install -g gulpjs/gulp#4.0```
+4. In directory /ui run command ```gulp```
+5. Run command from terminal in root directory:<br><br>
+5.1. Windows: ```gradlew.bat bootRun```<br>
+5.2. UN*X: ```gradlew bootRun``` 
+
+##### After application is launched, go to [localhost:8080](http://localhost:8080/) and try it.

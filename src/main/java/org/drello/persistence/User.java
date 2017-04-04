@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "users")
 public class User {
 
     @Id
